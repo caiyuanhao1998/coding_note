@@ -121,3 +121,30 @@ class Solution(object):
 
         return count
 ```
+
+（3）https://leetcode.cn/problems/unique-number-of-occurrences/description/?envType=study-plan-v2&envId=leetcode-75
+
+```shell
+# 双重字典嵌套
+class Solution(object):
+    def uniqueOccurrences(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: bool
+        """
+        arr_dic = {}
+        flag = True
+
+        for num in arr:
+            arr_dic[num] = arr_dic.get(num,0) + 1
+        
+        # 对出现次数做一个dict计数
+        value_dic = {}
+        for value in arr_dic.values():
+            value_dic[value] = value_dic.get(value,0) + 1
+        
+        for key in value_dic:
+            if value_dic[key] > 1:
+                flag = False
+        return flag
+```
