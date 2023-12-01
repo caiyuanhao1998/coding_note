@@ -119,6 +119,33 @@ class Solution(object):
         return count
 ```
 
+(3) https://leetcode.cn/problems/is-subsequence/?envType=study-plan-v2&envId=leetcode-75
+
+```shell
+class Solution(object):
+    def isSubsequence(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        p_t = 0
+        p_s = 0
+        if s == '':
+            return True
+
+        while p_t < len(t) and p_s < len(s):
+            if t[p_t] == s[p_s]:
+                    p_s += 1
+            p_t += 1
+        
+        if p_s == len(s):
+            return True
+        else:
+            return False
+```
+
+
 #### 左右指针：
 #### 例题
 （1）https://leetcode.cn/problems/max-number-of-k-sum-pairs/submissions/?envType=study-plan-v2&envId=leetcode-75
