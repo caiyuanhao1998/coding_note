@@ -148,3 +148,40 @@ class Solution(object):
                 flag = False
         return flag
 ```
+
+（4）https://leetcode.cn/problems/determine-if-two-strings-are-close/?envType=study-plan-v2&envId=leetcode-75
+
+```shell
+class Solution(object):
+    def closeStrings(self, word1, word2):
+        """
+        :type word1: str
+        :type word2: str
+        :rtype: bool
+        """
+        # 规则：总的类别一样，出现的次数得一样
+        # 对每个字符出现的次数建字典
+        dic_word1 = {}
+        dic_word2 = {}
+        close_flag = False
+
+        for i in range(len(word1)):
+            dic_word1[word1[i]] = dic_word1.get(word1[i],0) + 1
+
+        for i in range(len(word2)):
+            dic_word2[word2[i]] = dic_word2.get(word2[i],0) + 1
+        
+        # 比较两个dic的keys是否完全相等
+        if set(dic_word1.keys()) == set(dic_word2.keys()):
+            dic_word1_num = {}
+            dic_word2_num = {}
+
+            for key in dic_word1:
+                dic_word1_num[dic_word1[key]] = dic_word1_num.get(dic_word1[key],0) + 1
+            for key in dic_word2:
+                dic_word2_num[dic_word2[key]] = dic_word2_num.get(dic_word2[key],0) + 1
+            
+            if dic_word1_num == dic_word2_num:
+                close_flag =True
+        return close_flag
+```

@@ -79,3 +79,33 @@ class Solution(object):
                         asteroid_state.append(asteroids[i])
         return asteroid_state
 ```
+
+（3）https://leetcode.cn/problems/decode-string/?envType=study-plan-v2&envId=leetcode-75
+
+```shell
+# 有的时候，栈，需要多次出入
+class Solution(object):
+    def decodeString(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        s_decode = []
+        #可能需要多次出入栈
+        for i in range(len(s)):
+            if s[i] != ']':
+                s_decode.append(s[i])
+            else:
+                str_pop = []
+                repeat = ''
+                while s_decode[-1] != '[':
+                    str_pop.append(s_decode.pop())
+                s_decode.pop()
+
+                while len(s_decode)>0 and s_decode[-1].isdigit():
+                    repeat = repeat + s_decode.pop() 
+                
+                s_decode.append(int(repeat[::-1])*''.join(str_pop[::-1]))
+
+        return ''.join(s_decode)
+```
