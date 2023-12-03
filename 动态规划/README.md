@@ -75,3 +75,27 @@ class Solution(object):
                 max_benefit.append(max(nums[i-1]+max_benefit[i-2], max_benefit[i-1]))
         return max_benefit[len(nums)]
 ```
+
+(4) https://leetcode.cn/problems/domino-and-tromino-tiling/?envType=study-plan-v2&envId=leetcode-75
+
+```python
+class Solution(object):
+    def numTilings(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        # 需要推导出从 n 到 n + 1，数列，数学归纳
+        # f[n] = 2f[n-1] + f[n-3]
+        domino_list = []
+        for i in range(n):
+            if i == 0:
+                domino_list.append(1)
+            if i == 1:
+                domino_list.append(2)
+            if i == 2:
+                domino_list.append(5)
+            if i > 2:
+                domino_list.append((2*domino_list[i-1]+domino_list[i-3]))
+        return domino_list[-1] % (10**9 + 7)
+```
