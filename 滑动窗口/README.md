@@ -115,3 +115,36 @@ class Solution(object):
                 max_vowel_num = vowel_num
         return max_vowel_num
 ```
+
+（4）https://leetcode.cn/problems/max-consecutive-ones-iii/submissions/?envType=study-plan-v2&envId=leetcode-75
+
+```py
+# 只考虑一步的情况
+class Solution(object):
+    def longestOnes(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        # 用双指针维护一个最长且最多只包含 k 个 0 的滑动窗口
+        # 快慢指针
+        p_left = 0
+        # p_right = 0
+        length = len(nums)
+        zero_num = 0
+        max_length = 0
+
+        # 如果遇到0，增加0的计数
+        # 如果0的数量超过了k，移动左指针直到窗口内0的数量不超过k
+        for p_right in range(length):
+            if nums[p_right] == 0:
+                zero_num += 1
+            if zero_num > k: # 只要一大，就会减去，所以也不用while循环了
+                if nums[p_left] == 0:
+                    zero_num -= 1
+                p_left += 1
+            max_length = max(max_length,p_right-p_left+1)
+        
+        return max_length
+```
