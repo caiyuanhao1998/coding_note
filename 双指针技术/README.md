@@ -194,3 +194,30 @@ class Solution(object):
         return count
 ```
 
+(2) https://leetcode.cn/problems/container-with-most-water/submissions/?envType=study-plan-v2&envId=leetcode-75
+
+```python
+class Solution(object):
+    def maxArea(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        # 真正的左右指针
+        length = len(height)
+        p_left = 0
+        p_right = length - 1
+        max_area = 0
+        # 向内移动规则是每次短板向内移动一格
+        # area = (p_right - p_left) * min(height[p_left], height[p_right])
+        while p_left < p_right:
+            cur_area = (p_right - p_left) * min(height[p_left], height[p_right])
+            if cur_area > max_area:
+                max_area = cur_area
+            if height[p_left] >= height[p_right]:
+                p_right -= 1
+            else:
+                p_left += 1
+        return max_area
+```
+

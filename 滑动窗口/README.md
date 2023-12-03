@@ -84,3 +84,34 @@ class Solution(object):
                 curlength += 1
         return max(maxlength-1, 0)
 ```
+
+(3) https://leetcode.cn/problems/maximum-number-of-vowels-in-a-substring-of-given-length/?envType=study-plan-v2&envId=leetcode-75
+
+```py
+class Solution(object):
+    def maxVowels(self, s, k):
+        """
+        :type s: str
+        :type k: int
+        :rtype: int
+        """
+        vowel_letters = ['a','e','i','o','u']
+        length = len(s)
+        vowel_num = 0
+        max_vowel_num = 0
+        for i in range(length-k+1):
+            if i == 0:
+                for j in range(k):
+                    if s[j] in vowel_letters:
+                        vowel_num += 1
+            else:
+                if s[i-1] in vowel_letters:
+                    vowel_num -= 1
+                if s[i+k-1] in vowel_letters:
+                    vowel_num += 1
+            if vowel_num == k:
+                return k
+            if vowel_num > max_vowel_num:
+                max_vowel_num = vowel_num
+        return max_vowel_num
+```
