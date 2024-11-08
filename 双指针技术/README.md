@@ -151,6 +151,7 @@ class Solution(object):
 （1）https://leetcode.cn/problems/max-number-of-k-sum-pairs/submissions/?envType=study-plan-v2&envId=leetcode-75
 
 一般左右指针处理数组类问题会先做一个排序处理，可以直接 .sort() 排序，也可以快速排序：
+快速排序实际上也是一种递归思路，每次选择第一个元素作为 pivot, 小的放左边，大的放右边
 
 ```shell
 def quick_sort(arr):

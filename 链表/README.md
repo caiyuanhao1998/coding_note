@@ -10,7 +10,7 @@ class ListNode(object):
         self.next = next
 ```
 
-（1）链表翻转 —— 画图，记得头结点要指向 None，不然会死锁
+（1）链表翻转 —— 画图，记得头结点要指向 None，不然会死锁，链表实际是一种双指针
 
 ```python
 class Solution(object):
@@ -20,10 +20,11 @@ class Solution(object):
         :rtype: ListNode
         """
         p_cur = head
-        p_pre = None
+        p_pre = None        # 链表反转的时候，首先需要将 p_pre 指向 None, 但后边大部分情况下，双指针还是指向表头
         while p_cur:
             p_temp = p_cur.next
             p_cur.next = p_pre
+            # 注意，这里是先移动 p_pre 再移动 p_cur
             p_pre = p_cur
             p_cur = p_temp
                 
@@ -60,11 +61,11 @@ class Solution(object):
         while p_cur:
             if index == length // 2:
                 # print(head)
-                p_pre.next = p_cur.next
+                p_pre.next = p_cur.next   # 链表中间删除个节点就直接跳过就好了
                 return head
             else:
                 # 得形成 p_pre 和 p_cur
-                p_pre = p_cur
+                p_pre = p_cur             # 都是先移动 p_pre 再移动 p_cur
                 p_cur = p_cur.next
                 index += 1
 ```

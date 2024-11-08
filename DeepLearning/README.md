@@ -55,33 +55,6 @@ class SimpleCNN(nn.module):
         return x
 ```
 
-
-
-
-2. 写一个 sparse convolution - 仅对非零元素进行卷积运算
-
-
-```py
-import torch.nn.functional as F
-import torch.nn as nn
-
-
-class SparseConv2D(nn.Module):
-    def __init__(self, in_channels, out_channels, kernel_size, stride=1, padding=0, bias=False):
-        super(SparseConv2D, self).__init__()
-
-        # 准备一些属性和一个卷积的操作, 留到后边使用
-        self.kernel_size = kernel_size
-        self.stride = stride
-        self.padding = padding
-        self.conv = nn.Conv2d(in_channels=in_channels, out_channels=out_channels, kernel_size=kernel_size, stride=stride, padding=padding, bias=False)
-
-    def forward(self, x):
-```
-
-
-
-
 3. 写一个 Transformer 的 self-attention
 
 ```py

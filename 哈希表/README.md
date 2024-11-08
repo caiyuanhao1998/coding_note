@@ -152,6 +152,7 @@ class Solution(object):
 （4）https://leetcode.cn/problems/determine-if-two-strings-are-close/?envType=study-plan-v2&envId=leetcode-75
 
 ```shell
+# 凡是涉及出现次数的，首先想到 hash table
 class Solution(object):
     def closeStrings(self, word1, word2):
         """
